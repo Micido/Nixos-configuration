@@ -1,4 +1,4 @@
-{ self, ... }:{
+{ self, inputs, ... }:{
 	flake.nixosModules.nix = { pkgs, lib, ... }: {
 		nix = {
 			settings = {
@@ -17,11 +17,6 @@
 			};
 		};
 
-		nixpkgs.config = {
-			allowUnfree = true;
-			packagesOverrides = pkgs: {
-				unstable = import inputs.nixpkgs { config.allowUnfree = true; }
-			};
-		};
+		nixpkgs.config.allowUnfree = true;
 	};
 }

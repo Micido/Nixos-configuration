@@ -27,6 +27,8 @@
 
     	services.udisks2.enable = true;
 
+			nixpkgs.config.allowUnfree = true;
+
     	environment.systemPackages = with pkgs; [
     	  firefox
     	  vim
