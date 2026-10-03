@@ -1,6 +1,6 @@
 { self, ... }: {
 	flake.nixosModules.base = { pkgs, ... }: {
-		imports = [
+		imports = with self.nixosModules; [
 			core
 			audio
 		];

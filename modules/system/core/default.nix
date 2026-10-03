@@ -1,6 +1,6 @@
 { self, ... }: {
 	flake.nixosModules.core = { pkgs, ... }: {
-		imports = [
+		imports = with self.nixosModules; [
 			boot
 			nix
 			user

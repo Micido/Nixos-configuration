@@ -1,6 +1,6 @@
 { self, ... }: {
 	flake.nixosModules.user = { pkgs, ... }: {
-		imports = [ zsh ];
+		imports = [ self.nixosModules.zsh ];
 		users.users.micido = {
 			isNormalUser = true;
 			description = "micido";
