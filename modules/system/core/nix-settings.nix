@@ -13,12 +13,15 @@
 			gc = {
 				automatic = true;
 				dates = "weekly";
-				options = "-delete-older-than 5d";
+				options = "--delete-older-than 5d";
 			};
 		};
 
 		nixpkgs.config = {
 			allowUnfree = true;
+			packagesOverrides = pkgs: {
+				unstable = import inputs.nixpkgs { config.allowUnfree = true; }
+			};
 		};
 	};
 }
