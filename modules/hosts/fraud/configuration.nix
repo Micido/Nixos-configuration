@@ -1,7 +1,6 @@
 { self, inputs, moduleWithSystem, ... }: {
   
-  flake.nixosModules.fraudConfiguration = moduleWithSystem (
-		{ self', pkgs, lib, ... }: {
+  flake.nixosModules.fraudConfiguration = { pkgs, lib, ... }: {
 			imports = with self.nixosModules; [
     	  fraudHardware
     	  zsh
@@ -27,9 +26,9 @@
 
     	services.udisks2.enable = true;
 
-			nixpkgs.config.allowUnfree = true;
-
-    	environment.systemPackages = with pkgs; [
+    	environment.systemPackages = with pkgs; let
+				sys = pkgs.stdenv.hostPlatform.system;
+			in [
     	  firefox
     	  vim
     	  git
@@ -52,14 +51,13 @@
     	  github-cli
     	  btop htop
     	  ffmpeg
-				self'.packages.zathura
+				self.packages.${sys}.zathura
 				tuxedo
     	  bat lolcat
     	  nnn
     	  aria2
-    	  self'.packages.myZen
+    	  self.packages.${sys}.myZen
     	];
-		}
-	);
+		};
 }
 
