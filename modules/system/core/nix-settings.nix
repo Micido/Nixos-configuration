@@ -9,7 +9,7 @@
 					"flakes"
 				]; 
 			};
-			optimize.automatic = true;
+			optimise.automatic = true;
 			gc = {
 				automatic = true;
 				dates = "weekly";

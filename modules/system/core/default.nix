@@ -1,7 +1,7 @@
 { self, ... }: {
 	flake.nixosModules.core = { pkgs, ... }: {
 		imports = with self.nixosModules; [
-			boot
+			bootloader
 			nix
 			user
 			locale
